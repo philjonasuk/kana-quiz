@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
 export const App = (): JSX.Element => {
-    return <div>hey</div>
-}
+  return <div>hey</div>;
+};
