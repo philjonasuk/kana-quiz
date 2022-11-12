@@ -36,6 +36,8 @@
     "deploy": "gh-pages -d docs",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx src/",
     "lint:fix": "eslint --ext --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "coverage": "npm test -- --coverage .",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md|ts|tsx|graphql)\""
   },
   "eslintConfig": {
