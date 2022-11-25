@@ -10,10 +10,11 @@ root.render(
     basename={process.env.NODE_ENV === 'development' ? '/' : process.env.PUBLIC_URL}
   >
     <Routes>
-      {/* <Route path='/app'>
-            <Route path='path1' element={ <Somecomponent1 /> } />
-            <Route path='path2' element={ <Somecomponent2 /> } />
-        </Route> */}
+      <Route path="/game" element={<div>quiz</div>}>
+        <Route path="over" element={<div>game over</div>} />
+        <Route path="pause" element={<div>pause</div>} />
+      </Route>
+      <Route path="/review" element={<div>review</div>} />
       <Route path="/*" element={<App />} />
     </Routes>
   </HashRouter>

@@ -1,6 +1,6 @@
 {
-  "name": "hajimemashite",
-  "homepage": "https://philjonasuk.github.io/hajimemashite/",
+  "name": "kana-quiz",
+  "homepage": "https://philjonasuk.github.io/kana-quiz/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,7 +34,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d docs",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx src/",
-    "lint:fix": "eslint --ext --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --ext .ts,.tsx,.js,.jsx src/ --fix",
     "coverage": "npm test -- --coverage .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md|ts|tsx|graphql)\""
