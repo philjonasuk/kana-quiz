@@ -1,9 +1,9 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import {App} from './App';
+import {MainMenu} from './MainMenu';
 
-describe('App', () => {
+describe('MainMenu', () => {
   it('renders', () => {
-    render(<App />);
+    render(<MainMenu />);
   });
 });
