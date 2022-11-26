@@ -8,17 +8,21 @@ import {useKanaContext} from '../data/context';
 
 export const MainMenu: React.FC = () => {
   const navigate = useNavigate();
-  const {kana} = useKanaContext();
+  const {kana, getKanaLabel} = useKanaContext();
 
   return (
     <Grid container>
       <Grid item xs={6}>
-        <Typography variant="h3">Kana Quiz</Typography>
+        <Typography variant="h3">{getKanaLabel(kana)} Quiz</Typography>
         <KanaChoice />
       </Grid>
       <Grid item xs={6}>
-        <Button onClick={() => navigate(`/quiz/${kana}/12345/1`)}>New Game</Button>
-        <Button onClick={() => navigate(`/review/${kana}/1`)}>Review</Button>
+        <Button onClick={() => navigate(`/quiz/${kana}/12345/1`)}>
+          New {getKanaLabel(kana)} Quiz
+        </Button>
+        <Button onClick={() => navigate(`/review/${kana}`)}>
+          Review {getKanaLabel(kana)}
+        </Button>
       </Grid>
     </Grid>
   );

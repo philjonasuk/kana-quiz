@@ -10,7 +10,7 @@ export const KanaChoice: React.FC = () => {
   const {kana, setKana} = useKanaContext();
   return (
     <FormControl>
-      <FormLabel>Japanese script: {kana === 'k' ? 'Katakana' : 'Hiragana'}</FormLabel>
+      <FormLabel>Choose a Japanese script</FormLabel>
       <RadioGroup value={kana}>
         <FormControlLabel
           value="h"

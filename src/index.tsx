@@ -15,7 +15,7 @@ root.render(
     >
       <Routes>
         <Route path="/quiz/:kana/:seed/:index" element={<Quiz />} />
-        <Route path="/review/:kana/:id" element={<Review />} />
+        <Route path="/review/:kana" element={<Review />} />
         <Route path="/*" element={<MainMenu />} />
       </Routes>
     </HashRouter>
