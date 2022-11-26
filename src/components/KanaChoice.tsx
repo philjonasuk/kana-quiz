@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import {useKanaContext} from '../data/context';
 
 export const KanaChoice: React.FC = () => {
-  const [kana, setKana] = useState<'h' | 'k'>('h');
+  const {kana, setKana} = useKanaContext();
   return (
     <FormControl>
       <FormLabel>Japanese script: {kana === 'k' ? 'Katakana' : 'Hiragana'}</FormLabel>
