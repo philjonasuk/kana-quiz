@@ -1,7 +1,16 @@
-export type Kana = 'k' | 'h';
+export type KanaType = 'k' | 'h';
 
 export interface KanaContextType {
-  kana: Kana;
-  setKana: React.Dispatch<React.SetStateAction<Kana>>;
-  getKanaLabel: (k: Kana) => string;
+  kana: KanaType;
+  setKana: React.Dispatch<React.SetStateAction<KanaType>>;
+  getKanaLabel: (k: KanaType) => string;
+}
+
+export interface KanaCharacter {
+  id: string;
+  row: number;
+  kana: string;
+  reading: string;
+  type: KanaType;
+  col: number;
 }
