@@ -3,7 +3,7 @@ export type KanaType = 'k' | 'h';
 export interface KanaContextType {
   kana: KanaType;
   setKana: React.Dispatch<React.SetStateAction<KanaType>>;
-  getKanaLabel: (k: KanaType) => string;
+  kanaLabel: string;
 }
 
 export interface KanaCharacter {
