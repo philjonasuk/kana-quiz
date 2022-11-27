@@ -12,5 +12,5 @@ export interface KanaCharacter {
   kana: string;
   reading: string;
   type: KanaType;
-  col: number;
+  column: number;
 }
