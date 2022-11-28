@@ -2,7 +2,7 @@
 
 ## Progress
  - [x] Main Menu
- - [ ] Review
+ - [x] Review
  - [ ] Quiz
 
 http://localhost:3000/kana-quiz/#/

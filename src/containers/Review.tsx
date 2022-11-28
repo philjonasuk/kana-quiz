@@ -1,4 +1,4 @@
-import {Typography} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import React, {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {KanaChart} from '../components/KanaChart';
@@ -17,9 +17,9 @@ export const Review: React.FC = () => {
   }, [kana]);
 
   return (
-    <>
+    <Box>
       <Typography variant="h3">{kanaLabel} Review</Typography>
       <KanaChart />
-    </>
+    </Box>
   );
 };
