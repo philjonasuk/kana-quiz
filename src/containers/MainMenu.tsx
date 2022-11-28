@@ -20,7 +20,7 @@ export const MainMenu: React.FC = () => {
         <Button onClick={() => navigate(`/quiz/${kana}/12345/1`)}>
           New {kanaLabel} Quiz
         </Button>
-        <Button onClick={() => navigate(`/review/${kana}`)}>Review {kanaLabel}</Button>
+        <Button onClick={() => navigate(`/review/${kana}`)}>{kanaLabel} Review</Button>
       </Grid>
     </Grid>
   );

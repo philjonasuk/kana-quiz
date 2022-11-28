@@ -1,7 +1,7 @@
 #kana-quiz
 
 ## Progress
- - [ ] Main Menu
+ - [x] Main Menu
  - [ ] Review
  - [ ] Quiz
 
