@@ -26,6 +26,4 @@ export const KanaChart: React.FC = () => {
       })}
     </>
   );
-
-  return null;
 };
