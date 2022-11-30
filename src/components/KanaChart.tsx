@@ -4,12 +4,10 @@ import {useKanaChart} from '../hooks/useKanaChart';
 
 export const KanaChart: React.FC = () => {
   const {kanaChart, columnMax, rowMax, getKanaByColumnRow} = useKanaChart();
-  console.log({kanaChart, columnMax, rowMax});
 
   return (
     <>
       {Array.from(Array(rowMax).keys()).map((row: number) => {
-        console.log({row});
         return (
           <Box key={`row-${row}`} display="flex" flexDirection="row">
             <>
