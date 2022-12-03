@@ -4,6 +4,7 @@ export interface KanaContextType {
   kana: KanaType;
   setKana: React.Dispatch<React.SetStateAction<KanaType>>;
   kanaLabel: string;
+  shuffledKanaIds: string[];
 }
 
 export interface KanaCharacter {
