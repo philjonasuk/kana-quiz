@@ -1,8 +1,17 @@
 export type KanaType = 'k' | 'h';
 
+export interface KanaCharacter {
+  id: string;
+  row: number;
+  kana: string;
+  reading: string;
+  type: KanaType;
+  column: number;
+}
+
 export interface QuizQuestion {
-  answerId: string;
-  questionIds: string[];
+  answer: KanaCharacter;
+  questions: KanaCharacter[];
 }
 
 export interface KanaContextType {
@@ -13,13 +22,4 @@ export interface KanaContextType {
   quizIndex: number;
   quizQuestion: QuizQuestion | undefined;
   incrementQuizQuestion: () => void;
-}
-
-export interface KanaCharacter {
-  id: string;
-  row: number;
-  kana: string;
-  reading: string;
-  type: KanaType;
-  column: number;
 }
