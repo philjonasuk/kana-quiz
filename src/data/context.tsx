@@ -1,7 +1,8 @@
 import React, {createContext, useContext, useEffect, useMemo, useState} from 'react';
+import {createQuizQuestion} from '../utils/createQuizQuestion';
 import {shuffleArray} from '../utils/shuffleArray';
 import {kana_list} from './kana_list';
-import {KanaType, KanaContextType} from './types';
+import {KanaType, KanaContextType, QuizQuestion} from './types';
 
 export const KanaContext = createContext<KanaContextType>({} as KanaContextType);
 
@@ -10,6 +11,7 @@ export const KanaProvider: React.FC<any> = ({children}) => {
   const [previousKana, setPreviousKana] = useState<KanaType | null>(null);
   const kanaLabel = useMemo(() => (kana === 'k' ? 'Katakana' : 'Hiragana'), [kana]);
   const [shuffledKanaIds, setShuffledKanaIds] = useState<string[]>([]);
+  const [quizIndex, setQuizIndex] = useState(0);
 
   useEffect(() => {
     // only create a new shuffled array if kana type has changed
@@ -22,8 +24,24 @@ export const KanaProvider: React.FC<any> = ({children}) => {
     setPreviousKana(kana);
   }, [kana, previousKana]);
 
+  const incrementQuizQuestion = () => setQuizIndex((prevIndex) => prevIndex + 1);
+  const quizQuestion: QuizQuestion | undefined = useMemo(
+    () => createQuizQuestion(quizIndex, shuffledKanaIds),
+    [quizIndex, shuffledKanaIds]
+  );
+
   return (
-    <KanaContext.Provider value={{kana, setKana, kanaLabel, shuffledKanaIds}}>
+    <KanaContext.Provider
+      value={{
+        kana,
+        setKana,
+        kanaLabel,
+        shuffledKanaIds,
+        quizIndex,
+        quizQuestion,
+        incrementQuizQuestion,
+      }}
+    >
       {children}
     </KanaContext.Provider>
   );
