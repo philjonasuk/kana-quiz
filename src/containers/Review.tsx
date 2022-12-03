@@ -1,5 +1,5 @@
 import {Box, Button, Typography} from '@mui/material';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {KanaChart} from '../components/KanaChart';
 import {useKanaContext} from '../data/context';
@@ -10,12 +10,11 @@ export const Review: React.FC = () => {
   const navigate = useNavigate();
   const {setKana, kanaLabel} = useKanaContext();
 
-  useEffect(() => {
-    if (!kana) {
-      return;
-    }
-    setKana(kana as KanaType);
-  }, [kana]);
+  if (!kana) {
+    return null;
+  }
+
+  setKana(kana as KanaType);
 
   return (
     <Box>
