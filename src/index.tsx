@@ -10,9 +10,7 @@ const container = document.getElementById('app');
 const root = createRoot(container!);
 root.render(
   <KanaProvider>
-    <HashRouter
-      basename={process.env.NODE_ENV === 'development' ? '/' : process.env.PUBLIC_URL}
-    >
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/quiz/:kana" element={<Quiz />} />
         <Route path="/review/:kana" element={<Review />} />
