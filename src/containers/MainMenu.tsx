@@ -17,9 +17,7 @@ export const MainMenu: React.FC = () => {
         <KanaChoice />
       </Grid>
       <Grid item xs={6}>
-        <Button onClick={() => navigate(`/quiz/${kana}/12345/1`)}>
-          New {kanaLabel} Quiz
-        </Button>
+        <Button onClick={() => navigate(`/quiz/${kana}`)}>New {kanaLabel} Quiz</Button>
         <Button onClick={() => navigate(`/review/${kana}`)}>{kanaLabel} Review</Button>
       </Grid>
     </Grid>

@@ -14,7 +14,7 @@ root.render(
       basename={process.env.NODE_ENV === 'development' ? '/' : process.env.PUBLIC_URL}
     >
       <Routes>
-        <Route path="/quiz/:kana/:seed/:index" element={<Quiz />} />
+        <Route path="/quiz/:kana" element={<Quiz />} />
         <Route path="/review/:kana" element={<Review />} />
         <Route path="/*" element={<MainMenu />} />
       </Routes>
