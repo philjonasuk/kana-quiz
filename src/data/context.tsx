@@ -12,6 +12,7 @@ export const KanaProvider: React.FC<any> = ({children}) => {
   const kanaLabel = useMemo(() => (kana === 'k' ? 'Katakana' : 'Hiragana'), [kana]);
   const [shuffledKanaIds, setShuffledKanaIds] = useState<string[]>([]);
   const [quizIndex, setQuizIndex] = useState(0);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
 
   useEffect(() => {
     // only create a new shuffled array if kana type has changed
@@ -24,11 +25,22 @@ export const KanaProvider: React.FC<any> = ({children}) => {
     setPreviousKana(kana);
   }, [kana, previousKana]);
 
-  const incrementQuizQuestion = () => setQuizIndex((prevIndex) => prevIndex + 1);
+  const incrementQuizQuestion = (isCorrectAnswer?: boolean) => {
+    setQuizIndex((previousValue) => previousValue + 1);
+    if (isCorrectAnswer) {
+      setCorrectAnswersCount((previousValue) => previousValue + 1);
+    }
+  };
+
   const quizQuestion: QuizQuestion | undefined = useMemo(
     () => createQuizQuestion(quizIndex, shuffledKanaIds),
     [quizIndex, shuffledKanaIds]
   );
+
+  const resetQuiz = () => {
+    setQuizIndex(0);
+    setCorrectAnswersCount(0);
+  };
 
   return (
     <KanaContext.Provider
@@ -40,6 +52,8 @@ export const KanaProvider: React.FC<any> = ({children}) => {
         quizIndex,
         quizQuestion,
         incrementQuizQuestion,
+        correctAnswersCount,
+        resetQuiz,
       }}
     >
       {children}
