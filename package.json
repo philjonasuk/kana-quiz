@@ -30,7 +30,7 @@
     "start": "react-scripts start",
     "prebuild": "rmdir /s /q docs",
     "build": "react-scripts build",
-    "postbuild": "robocopy /move /e build docs",
+    "postbuild": "ren build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
