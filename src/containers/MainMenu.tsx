@@ -1,6 +1,4 @@
-import {Typography} from '@mui/material';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import {Typography, Button, Box} from '@mui/material';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {KanaChoice} from '../components/KanaChoice';
@@ -11,15 +9,15 @@ export const MainMenu: React.FC = () => {
   const {kana, kanaLabel} = useKanaContext();
 
   return (
-    <Grid container>
-      <Grid item xs={6}>
-        <Typography variant="h3">{kanaLabel} Quiz</Typography>
-        <KanaChoice />
-      </Grid>
-      <Grid item xs={6}>
-        <Button onClick={() => navigate(`/quiz/${kana}`)}>New {kanaLabel} Quiz</Button>
-        <Button onClick={() => navigate(`/review/${kana}`)}>{kanaLabel} Review</Button>
-      </Grid>
-    </Grid>
+    <Box display="flex" justifyContent="center" flexDirection="column">
+      <Typography variant="h3">{kanaLabel} Quiz</Typography>
+      <KanaChoice />
+      <Button variant="outlined" onClick={() => navigate(`/quiz/${kana}`)}>
+        New {kanaLabel} Quiz
+      </Button>
+      <Button variant="outlined" onClick={() => navigate(`/review/${kana}`)}>
+        {kanaLabel} Review
+      </Button>
+    </Box>
   );
 };

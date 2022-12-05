@@ -8,13 +8,13 @@ import {
   Typography,
 } from '@mui/material';
 import React, {useMemo, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {BackButton} from '../components/BackButton';
+import {Tally} from '../components/Tally';
 import {useKanaContext} from '../data/context';
 import {AnswerType} from '../data/types';
 import {useSetKana} from '../hooks/useSetKana';
 
 export const Quiz: React.FC = () => {
-  const navigate = useNavigate();
   const {
     kanaLabel,
     quizQuestion,
@@ -22,7 +22,6 @@ export const Quiz: React.FC = () => {
     correctAnswersCount,
     shuffledKanaIds,
     quizIndex,
-    resetQuiz,
   } = useKanaContext();
   const [chosenId, setChosenId] = useState<string | null>(null);
   const [answerType, setAnswerType] = useState<AnswerType>('unanswered');
@@ -40,12 +39,9 @@ export const Quiz: React.FC = () => {
   useSetKana();
 
   return (
-    <Box>
+    <Box display="flex" justifyContent="center" flexDirection="column">
       <Typography variant="h3">{kanaLabel} Quiz</Typography>
-      <Typography variant="h5">
-        Current: {quizIndex + 1} / Correct: {correctAnswersCount} / Total:{' '}
-        {shuffledKanaIds.length}
-      </Typography>
+      <Tally />
       <Typography variant="h1" ml="auto" mr="auto">
         {quizQuestion?.answer.kana}
       </Typography>
@@ -82,14 +78,7 @@ export const Quiz: React.FC = () => {
         </Button>
       </Box>
       <Box>
-        <Button
-          onClick={() => {
-            resetQuiz();
-            navigate(`/`);
-          }}
-        >
-          Back to main page
-        </Button>
+        <BackButton />
       </Box>
     </Box>
   );
