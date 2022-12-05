@@ -3,12 +3,11 @@ import {
   Button,
   FormControl,
   FormControlLabel,
-  FormHelperText,
   Radio,
   RadioGroup,
   Typography,
 } from '@mui/material';
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useKanaContext} from '../data/context';
 import {AnswerType} from '../data/types';
@@ -27,7 +26,19 @@ export const Quiz: React.FC = () => {
   } = useKanaContext();
   const [chosenId, setChosenId] = useState<string | null>(null);
   const [answerType, setAnswerType] = useState<AnswerType>('unanswered');
+  const buttonLabel = useMemo(() => {
+    if (answerType === 'unanswered') {
+      return 'Please choose an option';
+    }
+
+    if (answerType === 'correct') {
+      return 'Correct! next question';
+    }
+
+    return `The correct answer is : ${quizQuestion?.answer.reading}... next question`;
+  }, [answerType, quizQuestion?.answer.reading]);
   useSetKana();
+
   return (
     <Box>
       <Typography variant="h3">{kanaLabel} Quiz</Typography>
@@ -56,29 +67,19 @@ export const Quiz: React.FC = () => {
             />
           ))}
         </RadioGroup>
-        {answerType === 'wrong' && (
-          <FormHelperText>
-            The correct answer is : {quizQuestion?.answer.reading}
-          </FormHelperText>
-        )}
       </FormControl>
       <Box>
-        {answerType !== 'unanswered' && (
-          <Button
-            variant="contained"
-            onClick={() => {
-              setChosenId(null);
-              setAnswerType('unanswered');
-              incrementQuizQuestion(answerType === 'correct');
-            }}
-          >
-            {`${
-              answerType === 'correct'
-                ? 'Correct! next question'
-                : 'Wrong... next question'
-            }`}
-          </Button>
-        )}
+        <Button
+          variant="contained"
+          disabled={answerType === 'unanswered'}
+          onClick={() => {
+            setChosenId(null);
+            setAnswerType('unanswered');
+            incrementQuizQuestion(answerType === 'correct');
+          }}
+        >
+          {buttonLabel}
+        </Button>
       </Box>
       <Box>
         <Button
