@@ -42,6 +42,11 @@ export const KanaProvider: React.FC<any> = ({children}) => {
     setCorrectAnswersCount(0);
   };
 
+  const isLastQuizIndex = useMemo(
+    () => quizIndex + 1 === shuffledKanaIds.length,
+    [quizIndex, shuffledKanaIds]
+  );
+
   return (
     <KanaContext.Provider
       value={{
@@ -54,6 +59,7 @@ export const KanaProvider: React.FC<any> = ({children}) => {
         incrementQuizQuestion,
         correctAnswersCount,
         resetQuiz,
+        isLastQuizIndex,
       }}
     >
       {children}

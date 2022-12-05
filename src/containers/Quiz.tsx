@@ -15,14 +15,8 @@ import {AnswerType} from '../data/types';
 import {useSetKana} from '../hooks/useSetKana';
 
 export const Quiz: React.FC = () => {
-  const {
-    kanaLabel,
-    quizQuestion,
-    incrementQuizQuestion,
-    correctAnswersCount,
-    shuffledKanaIds,
-    quizIndex,
-  } = useKanaContext();
+  const {kanaLabel, quizQuestion, incrementQuizQuestion, isLastQuizIndex} =
+    useKanaContext();
   const [chosenId, setChosenId] = useState<string | null>(null);
   const [answerType, setAnswerType] = useState<AnswerType>('unanswered');
   const buttonLabel = useMemo(() => {
@@ -67,7 +61,7 @@ export const Quiz: React.FC = () => {
       <Box>
         <Button
           variant="contained"
-          disabled={answerType === 'unanswered'}
+          disabled={answerType === 'unanswered' || isLastQuizIndex}
           onClick={() => {
             setChosenId(null);
             setAnswerType('unanswered');

@@ -24,6 +24,7 @@ export interface KanaContextType {
   incrementQuizQuestion: (isCorrectAnswer?: boolean) => void;
   correctAnswersCount: number;
   resetQuiz: () => void;
+  isLastQuizIndex: boolean;
 }
 
 export type AnswerType = 'correct' | 'wrong' | 'unanswered';
