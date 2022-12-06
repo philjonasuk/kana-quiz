@@ -7,15 +7,15 @@ import {
   RadioGroup,
   Typography,
 } from '@mui/material';
-import React, {useMemo, useState} from 'react';
-import {BackButton} from '../components/BackButton';
-import {Tally} from '../components/Tally';
-import {useKanaContext} from '../data/context';
-import {AnswerType} from '../data/types';
-import {useSetKana} from '../hooks/useSetKana';
+import React, { useMemo, useState } from 'react';
+import { BackButton } from '../components/BackButton';
+import { Tally } from '../components/Tally';
+import { useKanaContext } from '../data/context';
+import { AnswerType } from '../data/types';
+import { useSetKana } from '../hooks/useSetKana';
 
 export const Quiz: React.FC = () => {
-  const {kanaLabel, quizQuestion, incrementQuizQuestion, isLastQuizIndex} =
+  const { kanaLabel, quizQuestion, incrementQuizQuestion, isLastQuizIndex } =
     useKanaContext();
   const [chosenId, setChosenId] = useState<string | null>(null);
   const [answerType, setAnswerType] = useState<AnswerType>('unanswered');
@@ -40,7 +40,7 @@ export const Quiz: React.FC = () => {
         {quizQuestion?.answer.kana}
       </Typography>
       <FormControl>
-        <RadioGroup value={chosenId} style={{display: 'flex', flexDirection: 'row'}}>
+        <RadioGroup value={chosenId} style={{ display: 'flex', flexDirection: 'row' }} key={quizQuestion?.answer.id}>
           {quizQuestion?.questions.map((question) => (
             <FormControlLabel
               key={question.id}
