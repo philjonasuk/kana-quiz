@@ -25,8 +25,11 @@ export const KanaProvider: React.FC<any> = ({children}) => {
     setPreviousKana(kana);
   }, [kana, previousKana]);
 
-  const incrementQuizQuestion = (isCorrectAnswer?: boolean) => {
+  const incrementQuizQuestion = () => {
     setQuizIndex((previousValue) => previousValue + 1);
+  };
+
+  const incrementCorrectQuestion = (isCorrectAnswer?: boolean) => {
     if (isCorrectAnswer) {
       setCorrectAnswersCount((previousValue) => previousValue + 1);
     }
@@ -60,6 +63,7 @@ export const KanaProvider: React.FC<any> = ({children}) => {
         correctAnswersCount,
         resetQuiz,
         isLastQuizIndex,
+        incrementCorrectQuestion,
       }}
     >
       {children}

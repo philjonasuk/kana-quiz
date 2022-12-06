@@ -21,7 +21,8 @@ export interface KanaContextType {
   shuffledKanaIds: string[];
   quizIndex: number;
   quizQuestion: QuizQuestion | undefined;
-  incrementQuizQuestion: (isCorrectAnswer?: boolean) => void;
+  incrementQuizQuestion: () => void;
+  incrementCorrectQuestion: (isCorrectAnswer?: boolean) => void;
   correctAnswersCount: number;
   resetQuiz: () => void;
   isLastQuizIndex: boolean;

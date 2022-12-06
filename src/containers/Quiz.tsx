@@ -15,8 +15,13 @@ import {AnswerType} from '../data/types';
 import {useSetKana} from '../hooks/useSetKana';
 
 export const Quiz: React.FC = () => {
-  const {kanaLabel, quizQuestion, incrementQuizQuestion, isLastQuizIndex} =
-    useKanaContext();
+  const {
+    kanaLabel,
+    quizQuestion,
+    incrementQuizQuestion,
+    isLastQuizIndex,
+    incrementCorrectQuestion,
+  } = useKanaContext();
   const [chosenId, setChosenId] = useState<string | null>(null);
   const [answerType, setAnswerType] = useState<AnswerType>('unanswered');
   const buttonLabel = useMemo(() => {
@@ -54,9 +59,10 @@ export const Quiz: React.FC = () => {
               disabled={answerType !== 'unanswered'}
               onChange={() => {
                 setChosenId(question.id);
-                setAnswerType(
-                  question.id === quizQuestion?.answer.id ? 'correct' : 'wrong'
-                );
+                const thisAnswerType: AnswerType =
+                  question.id === quizQuestion?.answer.id ? 'correct' : 'wrong';
+                setAnswerType(thisAnswerType);
+                incrementCorrectQuestion(thisAnswerType === 'correct');
               }}
             />
           ))}
@@ -69,7 +75,7 @@ export const Quiz: React.FC = () => {
           onClick={() => {
             setChosenId(null);
             setAnswerType('unanswered');
-            incrementQuizQuestion(answerType === 'correct');
+            incrementQuizQuestion();
           }}
         >
           {buttonLabel}
