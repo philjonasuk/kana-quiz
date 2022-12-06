@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/kana-quiz/static/js/main.30d86de1.js",
+    "main.js": "/kana-quiz/static/js/main.e53e5ee6.js",
     "index.html": "/kana-quiz/index.html",
-    "main.30d86de1.js.map": "/kana-quiz/static/js/main.30d86de1.js.map"
+    "main.e53e5ee6.js.map": "/kana-quiz/static/js/main.e53e5ee6.js.map"
   },
   "entrypoints": [
-    "static/js/main.30d86de1.js"
+    "static/js/main.e53e5ee6.js"
   ]
 }
